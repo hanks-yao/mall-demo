@@ -1,18 +1,25 @@
 <template>
   <div class="container">
     <drawer></drawer>
+
     <!-- 固定头部 -->
     <hover-search class="hover-search" :class="{show: topSearchShow}"></hover-search>
+
     <!-- 顶部广告 -->
-    <FixedTopPage :data="topAdvert"></FixedTopPage>
+    <!-- <FixedTopPage :data="topAdvert"></FixedTopPage> -->
+
     <!-- 头部 包括登录，我的订单等 -->
     <BaseHeader></BaseHeader>
+
     <!-- 搜索框、logo -->
-    <Search></Search>
+    <Search :show-logo="false"></Search>
+
     <!-- 商品分类 -->
     <cateNav :showAlways="true" v-if="showNav" :large="carouselLarge" :opacity="carouselOpacity"></cateNav>
+
     <!-- 楼层装修部分 -->
     <model-form ref="modelForm" :data="modelForm"></model-form>
+
     <!-- 底部栏 -->
     <BaseFooter></BaseFooter>
   </div>
@@ -65,6 +72,7 @@ export default {
         success: true,
         result: { pageData: JSON.stringify(mockIndexData) },
       };
+      console.log('🚀 ~ file: Index.vue ~ line 75 ~ getIndexData ~ res', res);
 
       if (res.success) {
         let dataJson = JSON.parse(res.result.pageData);

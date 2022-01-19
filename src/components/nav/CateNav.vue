@@ -11,9 +11,10 @@
         >
           {{ item.name }}
         </li>
-      </ul>   
+      </ul>
     </div> <hr style="width:1200px;height:2px;background:#e4393c;margin-top:-1px;margin-bottom:5px;"/>
     <!-- 全部商品分类 -->
+    <!-- {{cateList}} -->
     <div class="cate-list" v-show="showAlways || showFirstList" @mouseenter="showFirstList = true" @mouseleave="showFirstList = false">
       <!-- 第一级分类 -->
       <div class="nav-side" :class="{'large-nav': large, 'opacity-nav': opacity}" @mouseleave="panel = false">
@@ -64,6 +65,9 @@
 <script>
 import { getCategory } from '@/api/goods';
 import storage from '@/plugins/storage.js'
+
+import mockData from '@/mock/category.json';
+
 export default {
   name: 'GoodsListNav',
   props: {
@@ -106,20 +110,23 @@ export default {
     }
   },
   methods: {
-    getCate () { // 获取分类数据
+    async getCate () { // 获取分类数据
       if (this.hover) return false;
-      getCategory(0).then(res => {
-        if (res.success) {
-          this.cateList = res.result;
-          this.$store.commit('SET_CATEGORY', res.result)
-          // 过期时间
-          var expirationTime = new Date().setHours(new Date().getHours() + 1);
-          // 存放过期时间
-          localStorage.setItem('category_expiration_time', expirationTime);
-          // 存放分类信息
-          localStorage.setItem('category', JSON.stringify(res.result))
-        }
-      });
+
+      const res = mockData;
+      // const res = await getCategory(0);
+
+
+      if (res.success) {
+        this.cateList = res.result;
+        this.$store.commit('SET_CATEGORY', res.result)
+        // 过期时间
+        var expirationTime = new Date().setHours(new Date().getHours() + 1);
+        // 存放过期时间
+        localStorage.setItem('category_expiration_time', expirationTime);
+        // 存放分类信息
+        localStorage.setItem('category', JSON.stringify(res.result))
+      }
     },
     showDetail (index) { // 展示全部分类
       this.panel = true
@@ -141,6 +148,9 @@ export default {
     }
   },
   mounted () {
+    this.getCate();
+    return;
+
     if (localStorage.getItem('category') && localStorage.getItem('category_expiration_time')) {
       // 如果缓存过期，则获取最新的信息
       if (new Date() > localStorage.getItem('category_expiration_time')) {
