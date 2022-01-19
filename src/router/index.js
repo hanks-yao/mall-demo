@@ -69,7 +69,7 @@ const ShopEntry = resolve => require(['@/pages/shopEntry/ShopEntry'], resolve);
 Vue.use(Router);
 
 export default new Router({
-  mode: 'history',
+  // mode: 'history',
   routes: [{
     path: '/', // 首页
     name: 'Index',
