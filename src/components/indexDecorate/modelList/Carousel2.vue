@@ -60,6 +60,9 @@
 
 import {articleList} from '@/api/common.js'
 import storage from '@/plugins/storage';
+
+import mockData from '@/mock/article5.json';
+
 export default {
   name: 'modelCarousel2',
   props: ['data'],
@@ -77,12 +80,14 @@ export default {
     };
   },
   methods: {
-    getArticleList () { // 获取常见问题列表
-      articleList(this.params).then(res => {
-        if (res.success) {
-          this.articleList = res.result.records
-        }
-      })
+    async getArticleList () { // 获取常见问题列表
+      // const res = await articleList(this.params)
+
+      const res = mockData;
+
+      if (res.success) {
+        this.articleList = res.result.records
+      }
     },
     goArticle (id) { // 跳转文章详情
       let routeUrl = this.$router.resolve({

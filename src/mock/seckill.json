@@ -1,0 +1,103 @@
+{
+  "success": true,
+  "message": "success",
+  "code": 200,
+  "timestamp": 1642580969854,
+  "result": [
+    {
+      "timeLine": 12,
+      "startTime": 1642564800,
+      "distanceStartTime": 0,
+      "seckillGoodsList": [
+        {
+          "seckillId": "1483249510998306818",
+          "timeLine": 12,
+          "goodsId": "1377088702781587456",
+          "point": null,
+          "skuId": "1381793187491741696",
+          "goodsName": "达利园  核桃味",
+          "goodsImage": "https://lilishop-oss.oss-cn-beijing.aliyuncs.com/54254eea100346c286c2e79e536fc5b6.jpg?x-oss-process=style/400X400",
+          "storeId": "1376433565247471616",
+          "price": 2.0,
+          "quantity": 997,
+          "salesNum": 0,
+          "originalPrice": 25.0
+        },
+        {
+          "seckillId": "1483249510998306818",
+          "timeLine": 12,
+          "goodsId": "1377094770479857664",
+          "point": null,
+          "skuId": "1381793317607440384",
+          "goodsName": "【加班充饥站】良品铺子 海苔味酥脆薄饼 原味",
+          "goodsImage": "https://lilishop-oss.oss-cn-beijing.aliyuncs.com/f9d0fea28dac46b18b8348a42e504117.jpg?x-oss-process=style/400X400",
+          "storeId": "1376433565247471616",
+          "price": 2.0,
+          "quantity": 942,
+          "salesNum": 0,
+          "originalPrice": 21.0
+        },
+        {
+          "seckillId": "1483249510998306818",
+          "timeLine": 12,
+          "goodsId": "1377096232782004224",
+          "point": null,
+          "skuId": "1381793386888953856",
+          "goodsName": "德芙巧克力盒装丝滑牛奶巧克力 丝滑牛奶",
+          "goodsImage": "https://lilishop-oss.oss-cn-beijing.aliyuncs.com/63ca2ac31e5046579899771b1fd90dc8.jpg?x-oss-process=style/400X400",
+          "storeId": "1376433565247471616",
+          "price": 2.0,
+          "quantity": 987,
+          "salesNum": 0,
+          "originalPrice": 25.0
+        },
+        {
+          "seckillId": "1483249510998306818",
+          "timeLine": 12,
+          "goodsId": "1377096232782004224",
+          "point": null,
+          "skuId": "1381793386893148160",
+          "goodsName": "德芙巧克力盒装丝滑牛奶巧克力 小清新",
+          "goodsImage": "https://lilishop-oss.oss-cn-beijing.aliyuncs.com/779415bb2b8a4921ab4991995ddbebfa.jpg?x-oss-process=style/400X400",
+          "storeId": "1376433565247471616",
+          "price": 2.0,
+          "quantity": 961,
+          "salesNum": 0,
+          "originalPrice": 25.0
+        },
+        {
+          "seckillId": "1483249510998306818",
+          "timeLine": 12,
+          "goodsId": "1377104395929387008",
+          "point": null,
+          "skuId": "1381795951156396032",
+          "goodsName": "妮维雅(NIVEA)男士水活多效洁面乳 保湿",
+          "goodsImage": "https://lilishop-oss.oss-cn-beijing.aliyuncs.com/36e66e081a11449cbe03e9c2df884a9f.jpg?x-oss-process=style/400X400",
+          "storeId": "1376433565247471616",
+          "price": 2.0,
+          "quantity": 976,
+          "salesNum": 0,
+          "originalPrice": 23.0
+        }
+      ]
+    },
+    {
+      "timeLine": 18,
+      "startTime": 1642586400,
+      "distanceStartTime": 5431,
+      "seckillGoodsList": []
+    },
+    {
+      "timeLine": 20,
+      "startTime": 1642593600,
+      "distanceStartTime": 12631,
+      "seckillGoodsList": []
+    },
+    {
+      "timeLine": 22,
+      "startTime": 1642600800,
+      "distanceStartTime": 19831,
+      "seckillGoodsList": []
+    }
+  ]
+}

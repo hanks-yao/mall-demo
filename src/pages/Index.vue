@@ -25,6 +25,10 @@ import HoverSearch from '@/components/header/hoverSearch';
 import storage from '@/plugins/storage';
 import { indexData } from '@/api/index.js';
 import {seckillByDay} from '@/api/promotion'
+
+import mockIndexData from '@/mock/indexData.json';
+import mockSeckill from '@/mock/seckill.json';
+
 export default {
   name: 'Index',
   mounted () {
@@ -50,34 +54,45 @@ export default {
     };
   },
   methods: {
-    getIndexData () {
-      // 获取首页装修数据
-      indexData({ clientType: 'PC' }).then((res) => {
-        if (res.success) {
-          let dataJson = JSON.parse(res.result.pageData);
-          // 秒杀活动不是装修的数据，需要调用接口判断是否有秒杀商品
-          // 轮播图根据不同轮播，样式不同
-          for (let i = 0; i < dataJson.list.length; i++) {
-            let type = dataJson.list[i].type
-            if (type === 'carousel2') {
-              this.carouselLarge = true;
-            } else if (type === 'carousel1') {
-              this.carouselLarge = true
-              this.carouselOpacity = true
-            } else if (type === 'seckill') {
-              let seckill = this.getListByDay()
-              dataJson.list[i].options.list = seckill
-            }
+    // 获取首页装修数据
+    async getIndexData () {
+      // const res = await indexData({ clientType: 'PC' });
+
+      // mock
+      const res = {
+        code: 200,
+        message: "success",
+        success: true,
+        result: { pageData: JSON.stringify(mockIndexData) },
+      };
+
+      if (res.success) {
+        let dataJson = JSON.parse(res.result.pageData);
+        // 秒杀活动不是装修的数据，需要调用接口判断是否有秒杀商品
+        // 轮播图根据不同轮播，样式不同
+        for (let i = 0; i < dataJson.list.length; i++) {
+          let type = dataJson.list[i].type
+          if (type === 'carousel2') {
+            this.carouselLarge = true;
+          } else if (type === 'carousel1') {
+            this.carouselLarge = true
+            this.carouselOpacity = true
+          } else if (type === 'seckill') {
+            let seckill = this.getListByDay()
+            dataJson.list[i].options.list = seckill
           }
-          this.modelForm = dataJson;
-          storage.setItem('navList', dataJson.list[1])
-          this.showNav = true
-          this.topAdvert = dataJson.list[0];
         }
-      });
+        this.modelForm = dataJson;
+        storage.setItem('navList', dataJson.list[1])
+        this.showNav = true
+        this.topAdvert = dataJson.list[0];
+      }
     },
-    async getListByDay () { // 当天秒杀活动
-      const res = await seckillByDay()
+    // 当天秒杀活动
+    async getListByDay () {
+      // const res = await seckillByDay()
+      const res = mockSeckill;
+
       if (res.success && res.result.length) {
         return res.result
       } else {

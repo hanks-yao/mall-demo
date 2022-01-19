@@ -52,6 +52,9 @@
 
 import {articleList} from '@/api/common.js'
 import storage from '@/plugins/storage';
+
+import mockData from '@/mock/article5.json';
+
 export default {
   name: 'modelCarousel',
   props: ['data'],
@@ -62,20 +65,22 @@ export default {
       articleList: [], // 常见问题
       params: { // 请求常见问题参数
         pageNumber: 1,
-        pageSize: 5,
+        pageSize: 10,
         type: 'ANNOUNCEMENT',
         sort: 'sort'
       }
     };
   },
   methods: {
-    getArticleList () { // 获取常见问题列表
-      articleList(this.params).then(res => {
-        if (res.success) {
-          this.articleList = res.result.records
-        }
-      })
-    },
+    async getArticleList () { // 获取常见问题列表
+      // const res = articleList(this.params)
+
+      const res = mockData;
+
+      if (res.success) {
+        this.articleList = res.result.records
+      }
+  },
     goArticle (id) { // 跳转文章详情
       let routeUrl = this.$router.resolve({
         path: '/article',

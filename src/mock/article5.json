@@ -1,0 +1,59 @@
+{
+  "success": true,
+  "message": "success",
+  "code": 200,
+  "timestamp": 1642581593018,
+  "result": {
+    "records": [
+      {
+        "id": "1364720226167422976",
+        "title": "一个商品可以设置几个满额活动？",
+        "articleCategoryName": "购物流程",
+        "sort": 20,
+        "openStatus": true
+      },
+      {
+        "id": "1347445328169426944",
+        "title": "多人拼团有虚拟成团的功能吗？",
+        "articleCategoryName": "公告",
+        "sort": 18,
+        "openStatus": true
+      },
+      {
+        "id": "1347441567598403584",
+        "title": "商品编辑里面的规格名、规格值历史记录可以删除吗？",
+        "articleCategoryName": "公告",
+        "sort": 10,
+        "openStatus": true
+      },
+      {
+        "id": "1347471480271429632",
+        "title": "一个秒杀活动能参与多次吗？",
+        "articleCategoryName": "购物流程4",
+        "sort": 10,
+        "openStatus": true
+      },
+      {
+        "id": "1347440117820448768",
+        "title": "商品库存有数量限制吗？",
+        "articleCategoryName": "公告",
+        "sort": 8,
+        "openStatus": true
+      }
+    ],
+    "total": 42,
+    "size": 5,
+    "current": 1,
+    "orders": [
+      {
+        "column": "a.sort",
+        "asc": false
+      }
+    ],
+    "optimizeCountSql": true,
+    "searchCount": true,
+    "countId": null,
+    "maxLimit": null,
+    "pages": 9
+  }
+}
