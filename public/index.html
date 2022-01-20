@@ -1,3 +1,10 @@
+<!--
+ * @Description:
+ * @Author: yuanyao7
+ * @Date: 2022-01-20 09:09:42
+ * @LastEditors: yuanyao7
+ * @LastEditTime: 2022-01-20 15:56:57
+-->
 <!DOCTYPE html>
 <html lang="">
   <head>
@@ -14,7 +21,7 @@
     <% for(var js of htmlWebpackPlugin.options.cdn.js) { %>
       <script src="<%=js%>"></script>
       <% } %>
-      <script src="/mall-demo/config.js"></script>
+      <script src="<%= htmlWebpackPlugin.options.scriptSrc %>"></script>
     <noscript>
 
       <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>

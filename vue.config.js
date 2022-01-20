@@ -13,6 +13,7 @@ const configs = require('./src/config')
  */
 const enableProduction = process.env.NODE_ENV === "production"; // 是否生产环境
 
+const scriptSrc = enableProduction ? '/mall-demo/config.js' : '/config.js';
 
 let externals = {
   vue: "Vue",
@@ -133,6 +134,7 @@ module.exports = {
     config.plugin("html").tap(args => {
       args[0].cdn = cdn;
       args[0].title = configs.title;
+      args[0].scriptSrc = scriptSrc;
       return args;
     });
   }
