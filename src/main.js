@@ -1,7 +1,15 @@
+/*
+ * @Description:
+ * @Author: yuanyao7
+ * @Date: 2022-01-20 09:09:43
+ * @LastEditors: yuanyao7
+ * @LastEditTime: 2022-01-20 16:51:36
+ */
 import Vue from 'vue';
 import App from './App';
 import router from './router';
 import ViewUI from 'view-design';
+import VueLazyload from 'vue-lazyload'
 import './assets/styles/theme.less';
 // import './assets/iconfont/iconfont.css';
 import * as filters from './plugins/filters';
@@ -13,6 +21,7 @@ import {InstallAll} from '@/components/global.js';
 let title = require('@/config').title
 Vue.use(ViewUI);
 Vue.use(InstallAll);
+Vue.use(VueLazyload);
 Vue.config.productionTip = false;
 
 Object.keys(filters).forEach(key => {
@@ -41,7 +50,7 @@ Vue.prototype.linkTo = function (url) {
   }
 }
 // 联系客服
-Vue.prototype.connectCs = function (sign = '37ef9b97807d03c6741298ed4eb5b536d2d238e08a3c00fb01fe48f03a569974c99ad767e72c04b3165ef29aca2c488b505fe4ca') { 
+Vue.prototype.connectCs = function (sign = '37ef9b97807d03c6741298ed4eb5b536d2d238e08a3c00fb01fe48f03a569974c99ad767e72c04b3165ef29aca2c488b505fe4ca') {
   const url = 'https://yzf.qq.com/xv/web/static/chat/index.html?sign=' + sign
   window.open(url, '_blank')
 }

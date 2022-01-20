@@ -7,7 +7,7 @@
       </div>
       <div class="content-left">
         <div>
-          <img class="hover-pointer"  @click="linkTo(msgLeft.list[0].url)" :src="msgLeft.list[0].img" width="160" height="160" alt="" />
+          <img class="hover-pointer"  @click="linkTo(msgLeft.list[0].url)" v-lazy="msgLeft.list[0].img" width="160" height="160" alt="" />
           <div class="margin-left">{{ msgLeft.list[0].name }}</div>
           <div class="margin-left">{{ msgLeft.list[0].describe }}</div>
           <Button
@@ -21,7 +21,7 @@
         <div>
           <template v-for="(item, index) in msgLeft.list">
             <div v-if="index != 0" :key="index" @click="linkTo(item.url)" class="hover-pointer">
-              <img :src="item.img" width="80" height="80" alt="" />
+              <img v-lazy="item.img" width="80" height="80" alt="" />
               <div>
                 <div>{{ item.name }}</div>
                 <div>{{ item.describe }}</div>
@@ -51,7 +51,7 @@
               <span>{{ item.describe }}</span>
             </div>
             <div class="right-img">
-              <img :src="item.img" alt="" />
+              <img v-lazy="item.img" alt="" />
             </div>
           </div>
         </div>

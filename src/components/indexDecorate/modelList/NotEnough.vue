@@ -18,7 +18,7 @@
         class="hover-pointer"
         @click="linkTo(item.url)"
       >
-        <img :src="item.img" width="210" height="210" :alt="item.name" />
+        <img v-lazy="item.img" width="210" height="210" :alt="item.name" />
         <p>{{ item.name }}</p>
         <p>
           <span>{{ Number(item.price) | unitPrice("￥") }}</span>

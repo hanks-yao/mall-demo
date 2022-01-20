@@ -1,3 +1,10 @@
+<!--
+ * @Description:
+ * @Author: yuanyao7
+ * @Date: 2022-01-20 09:09:43
+ * @LastEditors: yuanyao7
+ * @LastEditTime: 2022-01-20 16:56:36
+-->
 <template>
   <div class="first-page-advert">
     <div
@@ -15,7 +22,7 @@
         <span class="line btm-line"></span>
         <p>{{ item.describe }}</p>
       </div>
-      <img :src="item.img" width="170" height="170" alt="" />
+      <img v-lazy="item.img" width="170" height="170" alt="" />
     </div>
   </div>
 </template>

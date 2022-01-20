@@ -15,7 +15,7 @@
     <swiper :options="swiperOption" ref="mySwiper">
       <swiper-slide v-for="(item,index) in goodsList" :key="index">
         <div class="content hover-pointer" @click="goToSeckill">
-          <img :src="item.goodsImage" width="140" height="140" :alt="item.goodsName">
+          <img v-lazy="item.goodsImage" width="140" height="140" :alt="item.goodsName">
           <div class="ellipsis">{{item.goodsName}}</div>
           <div>
             <span>{{ item.price | unitPrice('￥') }}</span>

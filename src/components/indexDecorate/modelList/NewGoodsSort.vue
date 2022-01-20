@@ -18,7 +18,7 @@
             <p>{{ item.name }}</p>
             <p class="describe">{{ item.describe }}</p>
           </div>
-          <img :src="item.img" alt="" />
+          <img v-lazy="item.img" alt="" />
         </div>
       </div>
     </div>
@@ -41,7 +41,7 @@
             <p>{{ item.name }}</p>
             <p class="describe">{{ item.describe }}</p>
           </div>
-          <img :src="item.img" alt="" />
+          <img v-lazy="item.img" alt="" />
         </div>
       </div>
     </div>
@@ -60,7 +60,7 @@
           class="hover-pointer"
           @click="linkTo(item.url)"
         >
-          <img :src="item.img" alt="" />
+          <img v-lazy="item.img" alt="" />
           <p>{{ item.name }}</p>
           <p>{{ item.price | unitPrice("￥") }}</p>
           <div class="jiaobiao" :class="'jiaobiao' + (index + 1)">

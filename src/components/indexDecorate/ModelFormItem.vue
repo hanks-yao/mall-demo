@@ -16,7 +16,7 @@
         <img
           style="display: block"
           class="hover-pointer"
-          :src="element.options.list[0].img"
+          v-lazy="element.options.list[0].img"
           @click="linkTo(element.options.list[0].url)"
           width="1200"
           alt=""
@@ -30,7 +30,7 @@
             class="hover-pointer"
             :key="index"
           >
-            <img :src="item.img" width="230" height="190" alt="" />
+            <img v-lazy="item.img" width="230" height="190" alt="" />
           </li>
         </template>
       </ul>
@@ -50,7 +50,7 @@
           class="hover-pointer"
           v-for="(item, index) in element.options.classification"
           :key="index"
-          :src="item.img"
+          v-lazy="item.img"
           width="190"
           height="210"
           alt=""
@@ -60,7 +60,7 @@
           class="hover-pointer"
           v-for="(item, index) in element.options.brandList"
           :key="'discount' + index"
-          :src="item.img"
+          v-lazy="item.img"
           width="240"
           height="105"
           alt=""
@@ -88,7 +88,7 @@
         class="hover-pointer mb_20"
 
         @click="linkTo(element.options.url)"
-        :src="element.options.img"
+        v-lazy="element.options.img"
         alt=""
       />
       </div>
