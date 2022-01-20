@@ -1,70 +1,70 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Index from '@/pages/Index';
-const Login = resolve => require(['@/pages/Login'], resolve);
-const SignUp = resolve => require(['@/pages/SignUp'], resolve);
-const ForgetPassword = resolve => require(['@/pages/ForgetPassword'], resolve);
-const GoodsList = resolve => require(['@/pages/GoodsList'], resolve);
-const GoodsDetail = resolve => require(['@/pages/GoodsDetail'], resolve);
-const PointGoodsDetail = resolve => require(['@/pages/promotion/PointGoodsDetail'], resolve);
-const ShoppingCart = resolve => require(['@/pages/ShoppingCart'], resolve);
-const Cart = resolve => require(['@/pages/Cart'], resolve);
-const Pay = resolve => require(['@/pages/payment/Pay'], resolve);
-const PayDone = resolve => require(['@/pages/payment/PayDone'], resolve);
-const PayMent = resolve => require(['@/pages/payment/PayMent'], resolve);
-const ThirdPay = resolve => require(['@/pages/payment/ThirdPay'], resolve);
-const Coupon = resolve => require(['@/pages/CouponCenter'], resolve);
-const seckill = resolve => require(['@/pages/promotion/seckill'], resolve);
-const article = resolve => require(['@/pages/article/index'], resolve);
-const PointMall = resolve => require(['@/pages/promotion/PointMall'], resolve);
+const Login = () => import('@/pages/Login');
+const SignUp = () => import('@/pages/SignUp');
+const ForgetPassword = () => import('@/pages/ForgetPassword');
+const GoodsList = () => import('@/pages/GoodsList');
+const GoodsDetail = () => import('@/pages/GoodsDetail');
+const PointGoodsDetail = () => import('@/pages/promotion/PointGoodsDetail');
+const ShoppingCart = () => import('@/pages/ShoppingCart');
+const Cart = () => import('@/pages/Cart');
+const Pay = () => import('@/pages/payment/Pay');
+const PayDone = () => import('@/pages/payment/PayDone');
+const PayMent = () => import('@/pages/payment/PayMent');
+const ThirdPay = () => import('@/pages/payment/ThirdPay');
+const Coupon = () => import('@/pages/CouponCenter');
+const seckill = () => import('@/pages/promotion/seckill');
+const article = () => import('@/pages/article/index');
+const PointMall = () => import('@/pages/promotion/PointMall');
 
 /*
  * 会员中心
  * 订单列表
  */
-const MyOrder = resolve => require([`@/pages/home/orderCenter/MyOrder`], resolve);
-const OrderDetail = resolve => require([`@/pages/home/orderCenter/OrderDetail`], resolve);
-const MyAddress = resolve => require(['@/pages/home/orderCenter/MyAddress'], resolve);
-const AddAddress = resolve => require(['@/pages/home/orderCenter/AddAddress'], resolve);
-const Complain = resolve => require(['@/pages/home/orderCenter/Complain'], resolve);
-const AfterSale = resolve => require(['@/pages/home/orderCenter/AfterSale'], resolve);
-const AfterSaleDetail = resolve => require(['@/pages/home/orderCenter/AfterSaleDetail'], resolve);
-const ApplyAfterSale = resolve => require(['@/pages/home/orderCenter/ApplyAfterSale'], resolve);
+const MyOrder = () => import(`@/pages/home/orderCenter/MyOrder`);
+const OrderDetail = () => import(`@/pages/home/orderCenter/OrderDetail`);
+const MyAddress = () => import('@/pages/home/orderCenter/MyAddress');
+const AddAddress = () => import('@/pages/home/orderCenter/AddAddress');
+const Complain = () => import('@/pages/home/orderCenter/Complain');
+const AfterSale = () => import('@/pages/home/orderCenter/AfterSale');
+const AfterSaleDetail = () => import('@/pages/home/orderCenter/AfterSaleDetail');
+const ApplyAfterSale = () => import('@/pages/home/orderCenter/ApplyAfterSale');
 
 /*
  * 会员中心
  */
-const Profile = resolve => require(['@/pages/home/memberCenter/Profile'], resolve);
-const AccountSafe = resolve => require(['@/pages/home/memberCenter/AccountSafe'], resolve);
-const ModifyPwd = resolve => require(['@/pages/home/memberCenter/ModifyPwd'], resolve);
-const Favorites = resolve => require(['@/pages/home/memberCenter/Favorites'], resolve);
-const Distribution = resolve => require(['@/pages/home/memberCenter/Distribution'], resolve);
-const CommentList = resolve => require(['@/pages/home/memberCenter/CommentList'], resolve); // 评价列表
-const AddEval = resolve => require(['@/pages/home/memberCenter/evaluation/AddEval'], resolve); // 添加评价
-const EvalDetail = resolve => require(['@/pages/home/memberCenter/evaluation/EvalDetail'], resolve);
-const ComplainList = resolve => require(['@/pages/home/memberCenter/ComplainList'], resolve);
-const ComplainDetail = resolve => require(['@/pages/home/memberCenter/ComplainDetail'], resolve);
-const Point = resolve => require(['@/pages/home/memberCenter/Point'], resolve);
-const MsgList = resolve => require(['@/pages/home/memberCenter/memberMsg/MsgList'], resolve);
-const MsgDetail = resolve => require(['@/pages/home/memberCenter/memberMsg/MsgDetail'], resolve);
+const Profile = () => import('@/pages/home/memberCenter/Profile');
+const AccountSafe = () => import('@/pages/home/memberCenter/AccountSafe');
+const ModifyPwd = () => import('@/pages/home/memberCenter/ModifyPwd');
+const Favorites = () => import('@/pages/home/memberCenter/Favorites');
+const Distribution = () => import('@/pages/home/memberCenter/Distribution');
+const CommentList = () => import('@/pages/home/memberCenter/CommentList'); // 评价列表
+const AddEval = () => import('@/pages/home/memberCenter/evaluation/AddEval'); // 添加评价
+const EvalDetail = () => import('@/pages/home/memberCenter/evaluation/EvalDetail');
+const ComplainList = () => import('@/pages/home/memberCenter/ComplainList');
+const ComplainDetail = () => import('@/pages/home/memberCenter/ComplainDetail');
+const Point = () => import('@/pages/home/memberCenter/Point');
+const MsgList = () => import('@/pages/home/memberCenter/memberMsg/MsgList');
+const MsgDetail = () => import('@/pages/home/memberCenter/memberMsg/MsgDetail');
 
 /*
  * 会员中心
  * 账户中心
  * */
-const Coupons = resolve => require(['@/pages/home/userCenter/Coupons'], resolve);
-const MyTracks = resolve => require(['@/pages/home/userCenter/MyTracks'], resolve);
-const MoneyManagement = resolve => require(['@/pages/home/userCenter/MoneyManagement'], resolve);
+const Coupons = () => import('@/pages/home/userCenter/Coupons');
+const MyTracks = () => import('@/pages/home/userCenter/MyTracks');
+const MoneyManagement = () => import('@/pages/home/userCenter/MoneyManagement');
 
-const Home = resolve => require(['@/pages/user/Home'], resolve);
+const Home = () => import('@/pages/user/Home');
 
-const Merchant = resolve => require(['@/pages/Merchant'], resolve);
-const UserMain = resolve => require(['@/pages/home/Main'], resolve);
+const Merchant = () => import('@/pages/Merchant');
+const UserMain = () => import('@/pages/home/Main');
 
 /**
  * 店铺入驻
  */
-const ShopEntry = resolve => require(['@/pages/shopEntry/ShopEntry'], resolve);
+const ShopEntry = () => import('@/pages/shopEntry/ShopEntry');
 
 Vue.use(Router);
 
