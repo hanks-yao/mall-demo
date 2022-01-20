@@ -21,14 +21,15 @@
         </div>
       </div>
       <div class="service-intro">
-        <div class="servece-type">
+        <!-- <div class="servece-type">
           <div class="servece-type-info" v-for="(guide, index) in guideArr" :key="index">
             <ul>
               <li v-for="(item, index) in guide" :key="index" @click="goArticle">{{item}}</li>
             </ul>
           </div>
-        </div>
-        <div class="clearfix"></div>
+        </div> -->
+
+        <!-- <div class="clearfix"></div>
         <div class="friend-link flex">
           <div class="friend-link-item">
             <ul>
@@ -57,7 +58,8 @@
               <img class="zhizhao" src="@/assets/images/zhizhao.jpg" mode="" />{{config.company.name}}
             </a>
           </div>
-        </div>
+        </div> -->
+
         <div class="clearfix"></div>
         <div class="copyright">
           <p>Copyright © {{year}} {{config.title}}</p>
