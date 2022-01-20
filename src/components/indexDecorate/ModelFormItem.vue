@@ -76,7 +76,7 @@
     <template v-if="element.type == 'newGoodsSort'">
       <new-goods-sort :data="element" class="mb_20 width_1200_auto"></new-goods-sort>
     </template>
-    <!-- 首页广告 -->
+    <!-- 首页广告：爆款直降，休闲食品 -->
     <template v-if="element.type == 'firstAdvert'">
       <first-page-advert :data="element" class="mb_20 width_1200_auto"></first-page-advert>
     </template>

@@ -3,7 +3,7 @@
  * @Author: yuanyao7
  * @Date: 2022-01-20 09:09:43
  * @LastEditors: yuanyao7
- * @LastEditTime: 2022-01-20 16:51:36
+ * @LastEditTime: 2022-01-20 17:33:16
  */
 import Vue from 'vue';
 import App from './App';
@@ -21,7 +21,9 @@ import {InstallAll} from '@/components/global.js';
 let title = require('@/config').title
 Vue.use(ViewUI);
 Vue.use(InstallAll);
-Vue.use(VueLazyload);
+Vue.use(VueLazyload, {
+  preLoad: 1.3,
+});
 Vue.config.productionTip = false;
 
 Object.keys(filters).forEach(key => {
