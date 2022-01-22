@@ -1,0 +1,22 @@
+{
+  "success": true,
+  "message": "success",
+  "code": 200,
+  "timestamp": 1642837780380,
+  "result": {
+    "storeId": "1376433565247471616",
+    "storeName": "A.Y Studio潮流定制",
+    "storeDisable": "OPEN",
+    "companyAddressPath": null,
+    "storeLogo": "https://lilishop-oss.oss-cn-beijing.aliyuncs.com/8ecf36b017394285a61ea658e94bb344.png",
+    "storeDesc": "工厂店",
+    "pcPageData": null,
+    "mobilePageData": null,
+    "selfOperated": "1",
+    "goodsNum": 139,
+    "collectionNum": 88,
+    "yzfSign": "37ef9b97807d03c6741298ed4eb5b536d2d238e08a3c00fb01fe48f03a569974c99ad767e72c04b3165ef29aca2c488b505fe4ca",
+    "yzfMpSign": "32b8ff6f8d1c240be8d7fe51bdd6d44a6776ea86930afbe5c3c342825e942c914fc6126b6be1f003ab04aee1af9f442d2c33e1427529300671588866edaa4b12",
+    "merchantEuid": "uuuu00"
+  }
+}

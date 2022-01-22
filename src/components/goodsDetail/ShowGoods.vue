@@ -46,7 +46,7 @@
         <!-- 商品详细 价格、优惠券、促销 -->
         <div class="item-detail-price-row">
           <div class="item-price-left">
-            
+
             <!-- 秒杀价格 -->
             <div class="item-price-row" v-if="skuDetail.promotionPrice && promotionMap['SECKILL']">
               <p>
@@ -479,7 +479,7 @@ export default {
   justify-content: center;
   align-items: center;
   display: flex;
-  width: 1200px;
+  // width: 1200px;
   margin: 0 auto;
   margin-bottom: 10px;
   border: 1px solid $border_color;
@@ -487,9 +487,9 @@ export default {
 }
 
 .item-detail-show {
-  width: 1200px;
+  // width: 1200px;
   margin: 0 auto;
-  padding: 30px;
+  padding: 30px 0;
   display: flex;
   flex-direction: row;
 }

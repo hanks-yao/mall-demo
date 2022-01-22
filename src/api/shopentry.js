@@ -1,6 +1,14 @@
+/*
+ * @Description:
+ * @Author: yuanyao7
+ * @Date: 2022-01-19 23:15:32
+ * @LastEditors: yuanyao7
+ * @LastEditTime: 2022-01-22 15:52:51
+ */
 import request, {
   Method
 } from '@/plugins/request.js'
+import mockGetDetailById from '@/mock/shop/getDetailById.json';
 
 // 店铺分页列表
 export function shopList (params) {
@@ -44,12 +52,15 @@ export function applyThird (params) {
 
 // 店铺详情
 export function getDetailById (id) {
-  return request({
+  /* return request({
     url: `/buyer/store/get/detail/${id}`,
     needToken: true,
     method: Method.GET
-  })
+  }) */
+
+  return mockGetDetailById;
 }
+
 // 店铺分类
 export function getCateById (id) {
   return request({

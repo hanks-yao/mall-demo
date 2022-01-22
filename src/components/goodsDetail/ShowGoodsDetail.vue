@@ -1,89 +1,88 @@
 <template>
-  <div>
-    <div class="item-intro-show">
-      <div class="item-intro-detail" ref="itemIntroDetail">
-        <div class="item-intro-nav item-tabs">
-          <Tabs :animated="false" @on-click="tabClick">
-            <TabPane label="商品介绍">
-              <div class="item-intro-img" ref="itemIntroGoods">
-                <div v-html="skuDetail.intro" v-if="skuDetail.intro"></div>
-                <div v-else style="margin:20px;">暂无商品介绍</div>
-              </div>
-            </TabPane>
-            <TabPane label="商品评价">
-              <div class="remarks-container" ref="itemGoodsComment">
-                <div class="remarks-analyse-box">
-                  <div class="remarks-analyse-goods">
-                    <i-circle :percent="skuDetail.grade" stroke-color="#5cb85c">
-                      <span class="remarks-analyse-num">{{skuDetail.grade}}%</span>
-                      <p class="remarks-analyse-title">好评率</p>
-                    </i-circle>
-                  </div>
-                </div>
-                <div class="remarks-bar">
-                  <span @click="viewByGrade('')" :class="{selectedBar: commentParams.grade === ''}">全部({{commentTypeNum.all}})</span>
-                  <span @click="viewByGrade('GOOD')" :class="{selectedBar: commentParams.grade === 'GOOD'}">好评({{commentTypeNum.good}})</span>
-                  <span @click="viewByGrade('MODERATE')" :class="{selectedBar: commentParams.grade === 'MODERATE'}">中评({{commentTypeNum.moderate}})</span>
-                  <span @click="viewByGrade('WORSE')" :class="{selectedBar: commentParams.grade === 'WORSE'}">差评({{commentTypeNum.worse}})</span>
-                </div>
-                <div style="text-align: center;margin-top: 20px;" v-if="commentList.length === 0">
-                  暂无评价数据
-                </div>
-                <div class="remarks-box" v-for="(item,index) in commentList" :key="index" v-else>
-                  <div class="remarks-user">
-                    <Avatar :src="item.memberProfile" />
-                    <span class="remarks-user-name">{{item.memberName | secrecyMobile}}</span>
-                  </div>
-                  <div class="remarks-content-box">
-                    <p>
-                      <Rate disabled :value="Number(item.descriptionScore)" allow-half class="remarks-star"></Rate>
-                    </p>
-                    <p class="remarks-content">{{item.content}}</p>
-                    <div class="comment-img" v-if="item.images">
-                      <div v-for="(img, imgIndex) in item.images.split(',')"
-                       @click="previewImg(img, item)"
-                       :class="{borderColor:img === item.previewImg}"
-                       :key="imgIndex">
-                        <img :src="img" alt="">
-                      </div>
-                    </div>
-                    <div class="preview-img"  v-if="item.previewImg"  @click.prevent="hidePreviewImg(item)">
-                      <div>
-                        <span @click.stop="rotatePreviewImg(0, item)"><Icon type="md-refresh" />左转</span>
-                        <span @click.stop="rotatePreviewImg(1, item)"><Icon type="md-refresh" />右转</span>
-                      </div>
-                      <img :src="item.previewImg" :style="{transform:`rotate(${item.deg}deg)`}" width="198" alt="">
-                    </div>
-                    <p class="remarks-sub">
-                      <span class="remarks-item">{{item.goodsName}}</span>
-                      <span class="remarks-time">{{item.createTime}}</span>
-                    </p>
-                  </div>
-                </div>
-                <div class="remarks-page">
-                  <Page :total="commentTotal" size="small"
-                    @on-change="changePageNum"
-                    @on-page-size-change="changePageSize"
-                    :page-size="commentParams.pageSize"
-                    ></Page>
+  <div class="item-intro-show">
+    <div class="item-intro-detail" ref="itemIntroDetail">
+      <div class="item-intro-nav item-tabs">
+        <Tabs :animated="false" @on-click="tabClick">
+          <TabPane label="商品介绍">
+            <div class="item-intro-img" ref="itemIntroGoods">
+              <div class="item-intro-attr" v-html="skuDetail.attr" v-if="skuDetail.attr"></div>
+              <div v-html="skuDetail.intro" v-if="skuDetail.intro"></div>
+              <div v-else style="margin:20px;">暂无商品介绍</div>
+            </div>
+          </TabPane>
+          <TabPane label="商品评价">
+            <div class="remarks-container" ref="itemGoodsComment">
+              <div class="remarks-analyse-box">
+                <div class="remarks-analyse-goods">
+                  <i-circle :percent="skuDetail.grade" stroke-color="#5cb85c">
+                    <span class="remarks-analyse-num">{{skuDetail.grade}}%</span>
+                    <p class="remarks-analyse-title">好评率</p>
+                  </i-circle>
                 </div>
               </div>
-            </TabPane>
-            <TabPane label="商品参数">
-              <template v-if="detail.goodsParamsDTOList && detail.goodsParamsDTOList.length">
-                <div class="goods-params" v-for="item in detail.goodsParamsDTOList" :key="item.groupId">
-                  <span class="ml_10">{{item.groupName}}</span>
-                  <table class="mb_10" cellpadding='0' cellspacing="0" >
-                    <tr v-for="param in item.goodsParamsItemDTOList" :key="param.paramId">
-                      <td style="text-align: center">{{param.paramName}}</td><td>{{param.paramValue}}</td>
-                    </tr>
-                  </table>
+              <div class="remarks-bar">
+                <span @click="viewByGrade('')" :class="{selectedBar: commentParams.grade === ''}">全部({{commentTypeNum.all}})</span>
+                <span @click="viewByGrade('GOOD')" :class="{selectedBar: commentParams.grade === 'GOOD'}">好评({{commentTypeNum.good}})</span>
+                <span @click="viewByGrade('MODERATE')" :class="{selectedBar: commentParams.grade === 'MODERATE'}">中评({{commentTypeNum.moderate}})</span>
+                <span @click="viewByGrade('WORSE')" :class="{selectedBar: commentParams.grade === 'WORSE'}">差评({{commentTypeNum.worse}})</span>
+              </div>
+              <div style="text-align: center;margin-top: 20px;" v-if="commentList.length === 0">
+                暂无评价数据
+              </div>
+              <div class="remarks-box" v-for="(item,index) in commentList" :key="index" v-else>
+                <div class="remarks-user">
+                  <Avatar :src="item.memberProfile" />
+                  <span class="remarks-user-name">{{item.memberName | secrecyMobile}}</span>
                 </div>
-              </template>
-              <div v-else>暂无商品参数</div>
-            </TabPane>
-          </Tabs>
-        </div>
+                <div class="remarks-content-box">
+                  <p>
+                    <Rate disabled :value="Number(item.descriptionScore)" allow-half class="remarks-star"></Rate>
+                  </p>
+                  <p class="remarks-content">{{item.content}}</p>
+                  <div class="comment-img" v-if="item.images">
+                    <div v-for="(img, imgIndex) in item.images.split(',')"
+                      @click="previewImg(img, item)"
+                      :class="{borderColor:img === item.previewImg}"
+                      :key="imgIndex">
+                      <img :src="img" alt="">
+                    </div>
+                  </div>
+                  <div class="preview-img"  v-if="item.previewImg"  @click.prevent="hidePreviewImg(item)">
+                    <div>
+                      <span @click.stop="rotatePreviewImg(0, item)"><Icon type="md-refresh" />左转</span>
+                      <span @click.stop="rotatePreviewImg(1, item)"><Icon type="md-refresh" />右转</span>
+                    </div>
+                    <img :src="item.previewImg" :style="{transform:`rotate(${item.deg}deg)`}" width="198" alt="">
+                  </div>
+                  <p class="remarks-sub">
+                    <span class="remarks-item">{{item.goodsName}}</span>
+                    <span class="remarks-time">{{item.createTime}}</span>
+                  </p>
+                </div>
+              </div>
+              <div class="remarks-page">
+                <Page :total="commentTotal" size="small"
+                  @on-change="changePageNum"
+                  @on-page-size-change="changePageSize"
+                  :page-size="commentParams.pageSize"
+                  ></Page>
+              </div>
+            </div>
+          </TabPane>
+          <TabPane label="商品参数">
+            <template v-if="detail.goodsParamsDTOList && detail.goodsParamsDTOList.length">
+              <div class="goods-params" v-for="item in detail.goodsParamsDTOList" :key="item.groupId">
+                <span class="ml_10">{{item.groupName}}</span>
+                <table class="mb_10" cellpadding='0' cellspacing="0" >
+                  <tr v-for="param in item.goodsParamsItemDTOList" :key="param.paramId">
+                    <td style="text-align: center">{{param.paramName}}</td><td>{{param.paramValue}}</td>
+                  </tr>
+                </table>
+              </div>
+            </template>
+            <div v-else>暂无商品参数</div>
+          </TabPane>
+        </Tabs>
       </div>
     </div>
   </div>
@@ -121,9 +120,10 @@ export default {
   },
   methods: {
     changeHeight (name) { // 设置商品详情高度
-      let heightCss = window.getComputedStyle(this.$refs[name]).height;
-      heightCss = parseInt(heightCss.substr(0, heightCss.length - 2)) + 89;
-      this.$refs.itemIntroDetail.style.height = heightCss + 'px';
+      return;
+      // let heightCss = window.getComputedStyle(this.$refs[name]).height;
+      // heightCss = parseInt(heightCss.substr(0, heightCss.length - 2)) + 89;
+      // this.$refs.itemIntroDetail.style.height = heightCss + 'px';
     },
     changePageNum (val) { // 修改评论页码
       this.commentParams.pageNumber = val;
@@ -134,19 +134,18 @@ export default {
       this.commentParams.pageSize = val;
       this.getList();
     },
-    getList () { // 获取评论列表
+    async getList () { // 获取评论列表
       this.commentParams.goodsId = this.skuDetail.goodsId;
-      goodsComment(this.commentParams).then(res => {
-        if (res.success) {
-          this.commentList = res.result.records;
-          this.commentTotal = res.result.total;
-        }
-      });
-      goodsCommentNum(this.skuDetail.goodsId).then(res => {
-        if (res.success) {
-          this.commentTypeNum = res.result;
-        }
-      });
+      const res = await goodsComment(this.commentParams)
+      if (res.success) {
+        this.commentList = res.result.records;
+        this.commentTotal = res.result.total;
+      }
+
+      const res2 = await goodsCommentNum(this.skuDetail.goodsId)
+      if (res2.success) {
+        this.commentTypeNum = res2.result;
+      }
     },
     viewByGrade (grade) { // 好中差评切换
       this.$set(this.commentParams, 'grade', grade);
@@ -217,10 +216,11 @@ export default {
 /***************商品详情介绍和推荐侧边栏开始***************/
 .item-intro-show{
 
-  width: 1200px;
-  margin: 15px auto;
+  // width: 1200px;
+  // margin: 15px auto;
   display: flex;
   flex-direction: row;
+  border: 1px solid #efefef;
 
 }
 .item-intro-recommend{
@@ -275,13 +275,17 @@ export default {
   font-weight: bolder;
 }
 .item-intro-detail{
-  margin: 0  30px;
   width: 100%;
 }
 .item-intro-nav{
-  width: 100%;
-  height: 38px;
-  background-color: #F7F7F7;
+  // width: 100%;
+  // height: 38px;
+  // background-color: #F7F7F7;
+  /deep/ {
+    .ivu-tabs-bar {
+      background-color: #F7F7F7;
+    }
+  }
 }
 .item-intro-nav ul{
   margin: 0px;
@@ -306,6 +310,33 @@ export default {
 }
 .item-intro-img img{
   max-width: 1000px;
+}
+.item-intro-attr {
+  // margin-bottom: 16px;
+
+  /deep/ {
+    ul {
+      display: flex;
+      align-items: center;
+      justify-content: start;
+      flex-wrap: wrap;
+      padding: 20px 0;
+      border-bottom: 1px #e5e5e5 solid;
+    }
+
+    li {
+      display: inline-block;
+      width: 235px;
+      height: 22px;
+      margin-left: 12px;
+      color: #6c6c6c;
+      line-height: 22px;
+      text-align: center;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+  }
 }
 /************* 商品参数 *************/
 .item-param-container {

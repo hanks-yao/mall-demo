@@ -1,0 +1,18 @@
+{
+  "success": true,
+  "message": "success",
+  "code": 200,
+  "timestamp": 1642844785735,
+  "result": {
+    "records": [],
+    "total": 0,
+    "size": 10,
+    "current": 1,
+    "orders": [],
+    "optimizeCountSql": true,
+    "searchCount": true,
+    "countId": null,
+    "maxLimit": null,
+    "pages": 0
+  }
+}

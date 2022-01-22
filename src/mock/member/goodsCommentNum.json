@@ -1,0 +1,7 @@
+{
+  "success": true,
+  "message": "success",
+  "code": 200,
+  "timestamp": 1642845364810,
+  "result": { "all": 2, "good": 1, "moderate": 0, "worse": 1, "haveImage": 1 }
+}

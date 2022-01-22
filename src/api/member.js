@@ -1,5 +1,8 @@
 import request, {Method} from '@/plugins/request.js';
 
+import mockGoodsComment from '@/mock/member/goodsComment.json';
+import mockGoodsCommentNum from '@/mock/member/goodsCommentNum.json';
+
 // 查询账户余额
 export function getMembersWallet () {
   return request({
@@ -98,21 +101,25 @@ export function collectList (params) {
 
 // 单个商品评价
 export function goodsComment (params) {
-  return request({
+  /* return request({
     url: `/buyer/memberEvaluation/${params.goodsId}/goodsEvaluation`,
     method: Method.GET,
     needToken: false,
     params
-  });
+  }); */
+
+  return mockGoodsComment
 }
 
-// 商品各评价类别数量
+// 商品评价统计
 export function goodsCommentNum (goodsId) {
-  return request({
+ /*  return request({
     url: `/buyer/memberEvaluation/${goodsId}/evaluationNumber`,
     method: Method.GET,
     needToken: false
-  });
+  }); */
+
+  return mockGoodsCommentNum;
 }
 
 // 添加会员评价

@@ -3,7 +3,11 @@
     <BaseHeader></BaseHeader>
     <Search></Search>
     <drawer></drawer>
+
+    <!-- 店铺title -->
     <ShopHeader :detail="storeMsg"></ShopHeader>
+
+    <!-- 面包屑导航，收藏店铺，联系客服 -->
     <div class="shop-item-path">
       <div class="shop-nav-container">
         <Breadcrumb>
@@ -15,13 +19,13 @@
         <div class="store-collect">
           <span class="mr_10" v-if="goodsMsg.data">
 
-            <router-link :to="'Merchant?id=' + goodsMsg.data.storeId">{{ goodsMsg.data.storeName }}</router-link>
+            <router-link :to="'Merchant?id=' + goodsMsg.data.storeId">{{ storeMsg.storeName }}</router-link>
           </span>
           <span @click="collect">
             <Icon type="ios-heart" :color="storeCollected ? '#ed3f14' : '#666'" />
             {{storeCollected ? '已收藏店铺' : '收藏店铺'}}
           </span>
-          <!-- 
+          <!--
                先看下udesk merchantEuid 是否有值
                有的话 链接udesk
                没有的话 显示云智服
@@ -34,12 +38,40 @@
         </div>
       </div>
     </div>
-    <!-- 商品信息展示 -->
-    <ShowGoods v-if="goodsMsg.data" :detail="goodsMsg"></ShowGoods>
-    <!-- 商品详细展示 -->
-    <ShowGoodsDetail v-if="goodsMsg.data" :detail="goodsMsg"></ShowGoodsDetail>
+
+    <article v-if="goodsMsg.data" class="goods-content">
+      <main class="goods-main">
+        <section class="goods-section">
+          <!-- 商品信息展示 -->
+          <ShowGoods v-if="goodsMsg.data" :detail="goodsMsg"></ShowGoods>
+        </section>
+
+        <!-- TODO -->
+        <section class="goods-section"></section>
+
+        <section class="goods-section detail-content">
+          <div class="detail-content-left">
+            <FxhhBox title="发现好物"></FxhhBox>
+          </div>
+          <div class="detail-content-right">
+            <!-- 商品详细展示 -->
+            <ShowGoodsDetail v-if="goodsMsg.data" :detail="goodsMsg"></ShowGoodsDetail>
+          </div>
+
+        </section>
+      </main>
+      <aside class="goods-aside">
+        <div class="shop-card">
+          <img :src="shopImg" />
+        </div>
+        <div class="others-card" style="margin-top: 20px">
+          <FxhhBox :round="1" title="推荐商品"></FxhhBox>
+        </div>
+      </aside>
+    </article>
 
     <Spin size="large" fix v-if="isLoading"></Spin>
+
     <BaseFooter></BaseFooter>
   </div>
 </template>
@@ -49,6 +81,7 @@ import Search from "@/components/Search";
 import ShopHeader from "@/components/header/ShopHeader";
 import ShowGoods from "@/components/goodsDetail/ShowGoods";
 import ShowGoodsDetail from "@/components/goodsDetail/ShowGoodsDetail";
+import FxhhBox from "@/components/goodsDetail/FxhhBox";
 import { goodsSkuDetail } from "@/api/goods";
 import {
   cancelCollect,
@@ -58,6 +91,7 @@ import {
 } from "@/api/member";
 import { getDetailById } from "@/api/shopentry";
 import { getIMDetail } from "@/api/common";
+import shopInfoImg from "@/assets/images/mock/shop-info.png";
 export default {
   name: "GoodsDetail",
   beforeRouteEnter(to, from, next) {
@@ -70,6 +104,7 @@ export default {
   },
   data() {
     return {
+      shopImg: shopInfoImg,
       goodsMsg: {}, // 商品信息
       isLoading: false, // 加载状态
       categoryBar: [], // 分类
@@ -91,7 +126,7 @@ export default {
       }
     },
     // 获取商品详情
-    getGoodsDetail() {
+    async getGoodsDetail() {
       this.isLoading = true;
       const params = this.$route.query;
       // 分销员id
@@ -106,53 +141,51 @@ export default {
         this.Cookies.setItem("distributionId", params.distributionId);
         let _this = this;
         // 绑定关系
-        getGoodsDistribution(params.distributionId).then((res) => {
-          // 绑定成功，则清除关系
-          if (res.success) {
-            _this.Cookies.removeItem("distributionId");
-          }
-        });
+        const res = await getGoodsDistribution(params.distributionId)
+        // 绑定成功，则清除关系
+        if (res.success) {
+          _this.Cookies.removeItem("distributionId");
+        }
       }
 
-      goodsSkuDetail(params)
-        .then((res) => {
-          this.isLoading = false;
-          if (res.success) {
-            const result = res.result;
-            const cateName = res.result.categoryName;
-            const cateId = result.data.categoryPath.split(",");
-            const cateArr = [];
-            cateId.forEach((e, index) => {
-              // 插入分类id和name
-              cateArr.push({
-                id: e,
-                name: cateName[index],
-              });
-            });
-            this.categoryBar = cateArr;
-            this.goodsMsg = res.result;
-            // 判断是否收藏
-            if (this.Cookies.getItem("userInfo")) {
-              isCollection("STORE", this.goodsMsg.data.storeId).then((res) => {
-                if (res.success && res.result) {
-                  this.storeCollected = true;
-                }
-              });
-            }
-            // 获取店铺信息
-            getDetailById(this.goodsMsg.data.storeId).then((res) => {
-              if (res.success) {
-                this.storeMsg = res.result;
-              }
-            });
-          } else {
-            this.$Message.error(res.message);
-            this.$router.push("/");
-          }
-        })
-        .catch(() => {
-          this.$router.push("/");
+      const res = await goodsSkuDetail(params);
+      this.isLoading = false;
+
+      if (res.success) {
+        const result = res.result;
+        const cateName = result.categoryName;
+        const cateId = result.data.categoryPath.split(",");
+        const cateArr = [];
+        cateId.forEach((e, index) => {
+          // 插入分类id和name
+          cateArr.push({
+            id: e,
+            name: cateName[index],
+          });
         });
+        this.categoryBar = cateArr;
+        this.goodsMsg = res.result;
+        // 判断是否收藏
+        if (this.Cookies.getItem("userInfo")) {
+          isCollection("STORE", this.goodsMsg.data.storeId).then((res) => {
+            if (res.success && res.result) {
+              this.storeCollected = true;
+            }
+          });
+        }
+        // 获取店铺信息
+        this.getStoreDetail(this.goodsMsg.data.storeId);
+      } else {
+        this.$Message.error(res.message);
+        this.$router.push("/");
+      }
+    },
+    // 获取店铺信息
+    async getStoreDetail(id) {
+      const res = await getDetailById(id);
+      if (res.success) {
+        this.storeMsg = res.result;
+      }
     },
     goGoodsList(currIndex) {
       // 跳转商品列表
@@ -162,7 +195,7 @@ export default {
           arr.push(e.id);
         }
       });
-      return location.origin + "/goodsList?categoryId=" + arr.toString();
+      return "/goodsList?categoryId=" + arr.toString();
     },
     async collect() {
       // 收藏店铺
@@ -196,6 +229,7 @@ export default {
     ShopHeader,
     ShowGoods,
     ShowGoodsDetail,
+    FxhhBox,
   },
 };
 </script>
@@ -224,6 +258,54 @@ export default {
         color: $theme_color;
       }
     }
+  }
+}
+
+.goods-content {
+  display: block;
+  width: 1200px;
+  overflow: hidden;
+  margin: 0 auto;
+
+  .goods-main {
+    float: left;
+    display: block;
+    width: 980px;
+    // margin-right: 20px;
+
+    .goods-section {
+      clear: both;
+      // position: relative;
+    }
+  }
+
+  .goods-aside {
+    padding: 30px 0;
+    float: right;
+    display: block;
+    width: 200px;
+  }
+}
+
+.detail-content {
+  .detail-content-left {
+    float: left;
+    width: 200px;
+  }
+
+  .detail-content-right {
+    float: right;
+    width: 750px;
+  }
+
+}
+
+.shop-card {
+  width: 100%;
+  border: 1px solid #f54874 !important;
+
+  img {
+    width: 100%;
   }
 }
 </style>

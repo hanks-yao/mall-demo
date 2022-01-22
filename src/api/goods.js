@@ -2,6 +2,8 @@ import request, {
   Method
 } from '@/plugins/request.js';
 
+import mockGoodsSkuDetail from '@/mock/goodsSkuDetail.json';
+
 // 商品列表
 export function goodsList (params) {
   return request({
@@ -33,12 +35,14 @@ export function goodsDetail (goodsId) {
 
 // id获取商品Sku详情
 export function goodsSkuDetail (params) {
-  return request({
+  return mockGoodsSkuDetail;
+
+  /* return request({
     url: `/buyer/goods/sku/${params.goodsId}/${params.skuId}`,
     method: Method.GET,
     needToken: true,
     params
-  });
+  }); */
 }
 
 // 获取所有商品分类

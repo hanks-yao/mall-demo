@@ -1,0 +1,262 @@
+{
+  "success": true,
+  "message": "success",
+  "code": 200,
+  "timestamp": 1642837548391,
+  "result": {
+    "specs": [
+      {
+        "skuId": "1381789991541145600",
+        "specValues": [
+          {
+            "specName": "images",
+            "specValue": null,
+            "specType": null,
+            "specImage": [
+              {
+                "url": "https://lilishop-oss.oss-cn-beijing.aliyuncs.com/389b2ce90fd0425a8a9d988890ad46d2.jpg",
+                "name": "1111111111111111111111111111.jpg",
+                "status": "finished"
+              },
+              {
+                "url": "https://lilishop-oss.oss-cn-beijing.aliyuncs.com/62d630ebc8ee415dbee2288315dc44ea.jpg",
+                "name": "222222222222222222222.jpg",
+                "status": "finished"
+              }
+            ]
+          },
+          {
+            "specName": "颜色",
+            "specValue": "白色",
+            "specType": null,
+            "specImage": null
+          }
+        ],
+        "quantity": 979
+      },
+      {
+        "skuId": "1381789991545339904",
+        "specValues": [
+          {
+            "specName": "images",
+            "specValue": null,
+            "specType": null,
+            "specImage": [
+              {
+                "url": "https://lilishop-oss.oss-cn-beijing.aliyuncs.com/ab2876454f9b4e5ebd99218a82b45da5.jpg",
+                "name": "3333333333333333333.jpg",
+                "status": "finished"
+              },
+              {
+                "url": "https://lilishop-oss.oss-cn-beijing.aliyuncs.com/4fab74f284cd47d8b82f8d83172a174f.jpg",
+                "name": "44444444444444444.jpg",
+                "status": "finished"
+              }
+            ]
+          },
+          {
+            "specName": "颜色",
+            "specValue": "杏色",
+            "specType": null,
+            "specImage": null
+          }
+        ],
+        "quantity": 998
+      },
+      {
+        "skuId": "1381789991545339904",
+        "specValues": [
+          {
+            "specName": "images",
+            "specValue": null,
+            "specType": null,
+            "specImage": [
+              {
+                "url": "https://lilishop-oss.oss-cn-beijing.aliyuncs.com/ab2876454f9b4e5ebd99218a82b45da5.jpg",
+                "name": "3333333333333333333.jpg",
+                "status": "finished"
+              },
+              {
+                "url": "https://lilishop-oss.oss-cn-beijing.aliyuncs.com/4fab74f284cd47d8b82f8d83172a174f.jpg",
+                "name": "44444444444444444.jpg",
+                "status": "finished"
+              }
+            ]
+          },
+          {
+            "specName": "颜色",
+            "specValue": "砖红",
+            "specType": null,
+            "specImage": null
+          }
+        ],
+        "quantity": 998
+      }
+    ],
+    "data": {
+      "id": "1381789991541145600",
+      "createBy": "13011111111",
+      "createTime": "2021-04-12 21:03:01",
+      "updateBy": null,
+      "updateTime": "2021-11-25 13:09:06",
+      "deleteFlag": false,
+      "goodsId": "1377127936569638912",
+      "simpleSpecs": " 03",
+      "freightTemplateId": "1427887123038781441",
+      "promotionFlag": false,
+      "promotionPrice": null,
+      "goodsName": "百搭显瘦高领加厚长袖针织衫",
+      "sn": "42542",
+      "brandId": "0",
+      "categoryPath": "1348576427268399318,1348576427268399349,1348576427268399350",
+      "goodsUnit": "件",
+      "sellingPoint": "实拍实价",
+      "weight": 0.0,
+      "marketEnable": "UPPER",
+      "attr": "<ul class=\"attrs\"> <li title=\"适用年龄:25-29周岁\">适用年龄:25-29周岁</li> <li title=\"尺码:均码\">尺码:均码</li> <li title=\"面料:其他\">面料:其他</li> <li title=\"图案:纯色\">图案:纯色</li> <li title=\"风格:通勤\">风格:通勤</li> <li title=\"领子:高领\">领子:高领</li> <li title=\"衣门襟:套头\">衣门襟:套头</li> <li title=\"颜色分类:白色\">颜色分类:白色</li> <li title=\"颜色分类:杏色\">颜色分类:杏色</li> <li title=\"颜色分类:黑色\">颜色分类:黑色</li> <li title=\"颜色分类:砖红\">颜色分类:砖红</li> <li title=\"颜色分类:焦糖色\">颜色分类:焦糖色</li> <li title=\"袖型:常规\">袖型:常规</li> <li title=\"组合形式:单件\">组合形式:单件</li> <li title=\"成分含量:51%(含)-70%(含)\">成分含量:51%(含)-70%(含)</li> <li title=\"上市年份/季节:2021年冬季\">上市年份/季节:2021年冬季</li> <li title=\"袖长:长袖\">袖长:长袖</li> <li title=\"款式:套头\">款式:套头</li> <li title=\"厚薄:常规\">厚薄:常规</li> <li title=\"衣长:常规款\">衣长:常规款</li> <li title=\"流行元素/工艺:螺纹\">流行元素/工艺:螺纹</li> </ul>",
+      "intro": "<p><img src=\"https://img.alicdn.com/imgextra/i2/114738167/TB2p8.Pm6ihSKJjy0FiXXcuiFXa_!!114738167.jpg\" style=\"width:100%;\"/><br/></p><p><img src=\"https://img.alicdn.com/imgextra/i3/114738167/TB2ZKxsnjuhSKJjSspjXXci8VXa_!!114738167.jpg\" style=\"width:100%;\"/><br/></p><p><img src=\"https://img.alicdn.com/imgextra/i2/114738167/TB2TKNsnjuhSKJjSspjXXci8VXa_!!114738167.jpg\" style=\"width:100%;\"/><br/></p><p><img src=\"https://img.alicdn.com/imgextra/i1/114738167/TB2VZttnaagSKJjy0FcXXcZeVXa_!!114738167.jpg\" style=\"width:100%;\"/><br/></p><p><img src=\"https://img.alicdn.com/imgextra/i2/114738167/TB2qWtLrgMPMeJjy1XdXXasrXXa_!!114738167.jpg\" style=\"width:100%;\"/><br/></p><p><img src=\"https://img.alicdn.com/imgextra/i3/114738167/TB2KLDbrgMPMeJjy1XcXXXpppXa_!!114738167.jpg\" style=\"width:100%;\"/><br/></p><p><img src=\"https://img.alicdn.com/imgextra/i4/114738167/TB23mR9mvxNTKJjy0FjXXX6yVXa_!!114738167.jpg\" style=\"width:100%;\"/><br/></p><p><img src=\"https://img.alicdn.com/imgextra/i4/114738167/TB2SmtOmvBNTKJjSszcXXbO2VXa_!!114738167.jpg\" style=\"width:100%;\"/><br/></p><p><img src=\"https://img.alicdn.com/imgextra/i1/114738167/TB2m6AGmWagSKJjy0FaXXb0dpXa_!!114738167.jpg\" style=\"width:100%;\"/><br/></p>",
+      "price": 666.0,
+      "cost": 454.0,
+      "viewCount": null,
+      "buyCount": 9,
+      "quantity": 977,
+      "grade": 50.0,
+      "thumbnail": "https://lilishop-oss.oss-cn-beijing.aliyuncs.com/389b2ce90fd0425a8a9d988890ad46d2.jpg?x-oss-process=style/400X400",
+      "big": null,
+      "small": "https://lilishop-oss.oss-cn-beijing.aliyuncs.com/389b2ce90fd0425a8a9d988890ad46d2.jpg?x-oss-process=style/200X200",
+      "original": null,
+      "storeCategoryPath": "1377047116722995200",
+      "commentNum": 2,
+      "storeId": "1376433565247471616",
+      "storeName": "A.Y Studio潮流定制",
+      "templateId": null,
+      "authFlag": "PASS",
+      "authMessage": null,
+      "underMessage": null,
+      "selfOperated": true,
+      "mobileIntro": "",
+      "goodsVideo": null,
+      "recommend": false,
+      "salesModel": "RETAIL",
+      "goodsType": "PHYSICAL_GOODS",
+      "specList": [
+        {
+          "specName": "images",
+          "specValue": null,
+          "specType": null,
+          "specImage": [
+            {
+              "url": "https://img.alicdn.com/bao/uploaded/i1/114738167/O1CN01QtYPuY2ACXNsExKFS_!!114738167.jpg_400x400.jpg",
+              "name": "1.jpg",
+              "status": "finished"
+            },
+            {
+              "url": "https://img.alicdn.com/bao/uploaded/i1/114738167/O1CN01TCUW6b2ACXNy3tBT7_!!114738167.jpg_400x400.jpg",
+              "name": "2.jpg",
+              "status": "finished"
+            },
+            {
+              "url": "https://img.alicdn.com/bao/uploaded/i2/114738167/O1CN01QpTLWO2ACXNwaCRNt_!!114738167.jpg_400x400.jpg",
+              "name": "3.jpg",
+              "status": "finished"
+            },
+            {
+              "url": "https://img.alicdn.com/bao/uploaded/i1/114738167/O1CN01Dx974X2ACXNvc4w0o_!!114738167.jpg_400x400.jpg",
+              "name": "4.jpg",
+              "status": "finished"
+            },
+            {
+              "url": "https://img.alicdn.com/bao/uploaded/i1/114738167/O1CN01wxgvQz2ACXO39vmtF_!!114738167.jpg_400x400.jpg",
+              "name": "5.jpg",
+              "status": "finished"
+            }
+          ]
+        },
+        {
+          "specName": "大师蓝标粉底液3",
+          "specValue": "03",
+          "specType": null,
+          "specImage": null
+        }
+      ],
+      "goodsGalleryList": [
+        "https://lilishop-oss.oss-cn-beijing.aliyuncs.com/389b2ce90fd0425a8a9d988890ad46d2.jpg",
+        "https://lilishop-oss.oss-cn-beijing.aliyuncs.com/62d630ebc8ee415dbee2288315dc44ea.jpg"
+      ]
+    },
+    "promotionMap": {
+      "COUPON-1483633544551165954": {
+        "couponName": "新年优惠券",
+        "receivedNum": 0,
+        "description": "333",
+        "couponLimitNum": 1,
+        "rangeDayType": "FIXEDTIME",
+        "storeId": "platform",
+        "deleteFlag": false,
+        "promotionName": "新年活动",
+        "createBy": "admin",
+        "getType": "FREE",
+        "storeCommission": 50,
+        "scopeType": "ALL",
+        "createTime": 1642560776257,
+        "couponType": "PRICE",
+        "price": 15,
+        "publishNum": 12,
+        "storeName": "platform",
+        "startTime": 1642521600000,
+        "endTime": 1644163200000,
+        "id": "1483633544551165954",
+        "usedNum": 0,
+        "consumeThreshold": 15
+      },
+      "COUPON-1482376422995750913": {
+        "couponName": "活动名称活动名称活动名称活动名称活动名称活动名称活动名称活动名称活动名称活动名称活动名称活动名称活动名称活动名称活动名称活动名称活动名称活动名称活动名称活动名称活动名称活动名称1q1111活动名称活动名称活动名称活动名称活动名称活动名称活动名称活动名称活动名称活动名称活动名称活动名称活动名称活动名称活动名称活动名称活动名称",
+        "receivedNum": 0,
+        "description": "111",
+        "couponLimitNum": 1,
+        "rangeDayType": "FIXEDTIME",
+        "storeId": "platform",
+        "deleteFlag": false,
+        "promotionName": "活动名称活动名称活动名称活动名称活动名称活动名称活动名称活动名称活动名称活动名称活动名称活动名称活动名称活动名称活动名称活动名称活动名称活动名称活动名称活动名称活动名称活动名称1q1111活动名称活动名称活动名称活动名称活动名称活动名称活动名称活动名称活动名称活动名称活动名称活动名称活动名称活动名称活动名称活动名称活动名称",
+        "createBy": "admin",
+        "getType": "FREE",
+        "storeCommission": 0,
+        "scopeType": "ALL",
+        "createTime": 1642261055123,
+        "couponType": "PRICE",
+        "price": 111,
+        "publishNum": 0,
+        "storeName": "platform",
+        "startTime": 1642176000000,
+        "endTime": 1644854400000,
+        "id": "1482376422995750913",
+        "usedNum": 0,
+        "consumeThreshold": 11
+      },
+      "COUPON-1483278166936236034": {
+        "couponName": "满20-5",
+        "receivedNum": 0,
+        "description": "满20-5",
+        "couponLimitNum": 1,
+        "rangeDayType": "FIXEDTIME",
+        "storeId": "1376433565247471616",
+        "deleteFlag": false,
+        "promotionName": "满20-5",
+        "createBy": "13011111111",
+        "getType": "FREE",
+        "scopeType": "ALL",
+        "createTime": 1642476047630,
+        "couponType": "PRICE",
+        "price": 5,
+        "publishNum": 1,
+        "storeName": "A.Y Studio潮流定制",
+        "startTime": 1642435200000,
+        "endTime": 1663171200000,
+        "id": "1483278166936236034",
+        "usedNum": 0,
+        "consumeThreshold": 20
+      }
+    },
+    "categoryName": ["女装", "上衣", "针织衫"]
+  }
+}

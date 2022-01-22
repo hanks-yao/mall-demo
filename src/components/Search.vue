@@ -1,13 +1,13 @@
 <template>
   <div>
     <div class="container">
-      <img
+      <!-- <img
         :src="$store.state.logoImg"
         v-if="showLogo"
         class="logo-img"
         alt=""
         @click="$router.push('/')"
-      />
+      /> -->
       <i-input
         v-model="searchData"
         size="large"
@@ -15,21 +15,27 @@
         placeholder="输入你想查找的商品"
         @keyup.enter.native="search"
       >
-        <Button v-if="!store"  slot="append" @click="search">搜索</Button>
+        <Button v-if="!store" slot="append" @click="search">搜索</Button>
       </i-input>
       <div v-if="store" class="btn-div">
-        <Button class="store-search" type="warning" @click="searchStore">搜本店</Button>
-        <Button class="store-search" type="primary" @click="search">搜全站</Button>
+        <Button class="store-search" type="warning" @click="searchStore"
+          >搜本店</Button
+        >
+        <Button class="store-search" type="primary" @click="search"
+          >搜全站</Button
+        >
       </div>
       <template v-if="showTag">
-        <div style="height:12px" v-if="promotionTags.length === 0"></div>
+        <div style="height: 12px" v-if="promotionTags.length === 0"></div>
         <div v-else>
           <Tag
             v-for="(item, index) in promotionTags"
             :key="index"
             class="mr_10"
           >
-            <span class="hover-color" @click="selectTags(item)">{{ item }}</span>
+            <span class="hover-color" @click="selectTags(item)">{{
+              item
+            }}</span>
           </Tag>
         </div>
       </template>
@@ -38,76 +44,88 @@
 </template>
 
 <script>
-import storage from '@/plugins/storage.js'
-import {hotWords} from '@/api/goods.js'
+import storage from "@/plugins/storage.js";
+import { hotWords } from "@/api/goods.js";
+import hotwords from "@/mock/hotwords.json";
+
 export default {
-  name: 'search',
+  name: "search",
   props: {
-    showTag: { // 是否展示搜索栏下方热门搜索
+    showTag: {
+      // 是否展示搜索栏下方热门搜索
       type: Boolean,
-      default: true
+      default: true,
     },
-    showLogo: { // 是否展示左侧logo
+    showLogo: {
+      // 是否展示左侧logo
       type: Boolean,
-      default: true
+      default: true,
     },
-    store: { // 是否为店铺页面
+    store: {
+      // 是否为店铺页面
       type: Boolean,
-      default: false
+      default: false,
     },
     hover: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
-  data () {
+  data() {
     return {
-      searchData: '' // 搜索内容
+      searchData: "", // 搜索内容
     };
   },
+  computed: {
+    promotionTags() {
+      if (this.$store.state.hotWordsList) {
+        return JSON.parse(this.$store.state.hotWordsList);
+      } else {
+        return [];
+      }
+    },
+  },
+  created() {
+    this.searchData = this.$route.query.keyword;
+    if (!this.hover) {
+      // 首页顶部固定搜索栏不调用热词接口
+      // 搜索热词每5分钟请求一次
+      const reloadTime = storage.getItem("hotWordsReloadTime");
+      const time = new Date().getTime() - 5 * 60 * 1000;
+
+      if (!reloadTime || (reloadTime && time > reloadTime)) {
+        this.getHotWords();
+      }
+    }
+  },
   methods: {
-    selectTags (item) { // 选择热门标签
+    selectTags(item) {
+      // 选择热门标签
       this.searchData = item;
       this.search();
     },
-    search () { // 全平台搜索商品
+    search() {
+      // 全平台搜索商品
       this.$router.push({
-        path: '/goodsList',
-        query: { keyword: this.searchData }
+        path: "/goodsList",
+        query: { keyword: this.searchData },
       });
     },
-    searchStore () { // 店铺搜索商品
-      this.$emit('search', this.searchData)
-    }
-  },
-  computed: {
-    promotionTags () {
-      if (this.$store.state.hotWordsList) {
-        return JSON.parse(this.$store.state.hotWordsList)
-      } else {
-        return []
+    searchStore() {
+      // 店铺搜索商品
+      this.$emit("search", this.searchData);
+    },
+    async getHotWords() {
+      // const res = await hotWords({ count: 5 });
+      const res = hotwords;
+
+      if (res.success && res.result) {
+        storage.setItem("hotWordsList", res.result);
       }
-    }
+
+      storage.setItem("hotWordsReloadTime", new Date().getTime());
+    },
   },
-  created () {
-    this.searchData = this.$route.query.keyword
-    if (!this.hover) { // 首页顶部固定搜索栏不调用热词接口
-      // 搜索热词每5分钟请求一次
-      const reloadTime = storage.getItem('hotWordsReloadTime')
-      const time = new Date().getTime() - 5 * 60 * 1000
-      if (!reloadTime) {
-        hotWords({count: 5}).then(res => {
-          if (res.success && res.result) storage.setItem('hotWordsList', res.result)
-        })
-        storage.setItem('hotWordsReloadTime', new Date().getTime())
-      } else if (reloadTime && time > reloadTime) {
-        hotWords({count: 5}).then(res => {
-          if (res.success && res.result) storage.setItem('hotWordsList', res.result)
-        })
-        storage.setItem('hotWordsReloadTime', new Date().getTime())
-      }
-    }
-  }
 };
 </script>
 <style scoped lang="scss">
@@ -146,14 +164,14 @@ export default {
   width: 150px;
   cursor: pointer;
 }
-.store-search{
+.store-search {
   padding: 0 9px;
   border-radius: 0;
-  &:nth-child(2){
+  &:nth-child(2) {
     margin-left: -5px;
   }
 }
-.btn-div{
+.btn-div {
   position: relative;
   height: 0px;
   top: -38px;
