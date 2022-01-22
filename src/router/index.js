@@ -70,6 +70,7 @@ Vue.use(Router);
 
 export default new Router({
   // mode: 'history',
+  base: '/mall-demo/',
   routes: [{
     path: '/', // 首页
     name: 'Index',
