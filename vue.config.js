@@ -13,7 +13,7 @@ const configs = require('./src/config')
  */
 const enableProduction = process.env.NODE_ENV === "production"; // 是否生产环境
 
-const scriptSrc = enableProduction ? '/mall-demo/config.js' : '/config.js';
+const scriptSrc = '/config.js';
 
 let externals = {
   vue: "Vue",
@@ -60,7 +60,7 @@ externals = enableProduction && configs.enableCDN  ? externals : {};
 jsPlugin = enableProduction ? jsPlugin : [];
 
 module.exports = {
-  publicPath: enableProduction ? '/mall-demo/' : '/',
+  publicPath: "/",
 
   // 输出文件目录，当运行 vue-cli-service build 时生成的生产环境构建文件的目录。注意目标目录在构建之前会被清除
   outputDir: "dist",
