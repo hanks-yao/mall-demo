@@ -28,21 +28,29 @@
           >
         </div>
       </div>
+
       <!-- 右侧商品信息、活动信息、操作展示 -->
       <div class="item-detail-right">
         <div class="item-detail-title">
-          <p>
+          <div class="item-detail-title-left">
             {{ skuDetail.goodsName }}
-          </p>
+          </div>
+
+          <div class="item-detail-title-right">淘宝链接</div>
         </div>
-        <div class="sell-point">
+       <!--  <div class="sell-point">
           {{ skuDetail.sellingPoint }}
-        </div>
+        </div> -->
+
         <!-- 限时秒杀 -->
         <Promotion
           v-if="promotionMap['SECKILL']"
           :time="promotionMap['SECKILL'].endTime"
         ></Promotion>
+
+        <div class="item-detail-banner">
+          <img src="https://src.vvic.com/statics/v2/css/img/detail-active-banner-slzz.png" />
+        </div>
         <!-- 商品详细 价格、优惠券、促销 -->
         <div class="item-detail-price-row">
           <div class="item-price-left">
@@ -64,12 +72,18 @@
             <!-- 商品原价 -->
             <div class="item-price-row" v-else>
               <p>
-                <span class="item-price-title">价 &nbsp;&nbsp;&nbsp;&nbsp;格</span>
+                <span class="item-price-title">批发价</span>
                 <span class="item-price">{{ skuDetail.price | unitPrice("￥") }}</span>
               </p>
             </div>
+            <div class="item-price-row">
+              <p>
+                <span class="item-price-title">淘宝价</span>
+                <span class="item-price-sub">{{ skuDetail.price | unitPrice("￥") }}</span>
+              </p>
+            </div>
             <!-- 优惠券展示 -->
-            <div class="item-price-row" v-if="promotionMap['COUPON'].length">
+            <!-- <div class="item-price-row" v-if="promotionMap['COUPON'].length">
               <p>
                 <span class="item-price-title">优 惠 券</span>
                 <span
@@ -86,7 +100,7 @@
                   >
                 </span>
               </p>
-            </div>
+            </div> -->
             <!-- 满减展示 -->
             <div class="item-price-row" v-if="promotionMap['FULL_DISCOUNT']">
               <p>
@@ -118,10 +132,34 @@
             </div>
           </div>
         </div>
+
+        <div class="detail-info-line">
+          <dl>
+            <dt>货号</dt>
+            <dd>9836#</dd>
+          </dl>
+          <dl>
+            <dt>上新时间</dt>
+            <dd>2021-11-02 00:13:06</dd>
+          </dl>
+
+          <div class="samestyle-box">
+            <Button shape="circle" icon="ios-search" size="small">搜同款</Button>
+          </div>
+        </div>
+
+        <div class="detail-info-line">
+          <ul class="detail-amount">
+            <li>销量：15</li>
+            <li>上款量：64</li>
+            <li>收藏量：23</li>
+          </ul>
+        </div>
+
         <!-- 选择颜色 -->
-        <div class="item-select" v-for="(sku, index) in formatList" :key="sku.name">
+        <div class="detail-info-line item-select" v-for="(sku, index) in formatList" :key="sku.name">
           <div class="item-select-title">
-            <p>{{ sku.name }}</p>
+            {{ sku.name }}
           </div>
           <div class="item-select-column">
             <div class="item-select-row" v-for="item in sku.values" :key="item.value">
@@ -139,8 +177,85 @@
             </div>
           </div>
         </div>
-        <br />
-        <div class="add-buy-car-box">
+
+        <div class="detail-info-row item-select">
+          <div class="item-select-title">尺码</div>
+          <div class="item-select-column">
+            <div class="size-select">
+              <div class="size-select-label">XS</div>
+              <div class="size-select-label2">150</div>
+              <div class="size-select-input">
+                <InputNumber
+                  :value="0"
+                  controls-outside
+                ></InputNumber>
+              </div>
+            </div>
+            <div class="size-select">
+              <div class="size-select-label">S</div>
+              <div class="size-select-label2">155</div>
+              <div class="size-select-input">
+                <InputNumber
+                  :value="0"
+                  controls-outside
+                ></InputNumber>
+              </div>
+            </div>
+            <div class="size-select">
+              <div class="size-select-label">M</div>
+              <div class="size-select-label2">160</div>
+              <div class="size-select-input">
+                <InputNumber
+                  :value="0"
+                  controls-outside
+                ></InputNumber>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="detail-info-row item-select">
+          <div class="item-select-title">上款</div>
+          <div class="item-select-column item-select-btn">
+            <Button type="primary" ghost>一键上传</Button>
+            <Button type="primary" ghost>数据包</Button>
+            <Button type="primary" ghost>图片下载</Button>
+          </div>
+        </div>
+
+        <div class="detail-info-row item-select">
+          <div class="item-select-title">进货</div>
+          <div class="item-select-column item-select-btn">
+            <Button type="primary">加入进货车</Button>
+          </div>
+        </div>
+
+        <div class="detail-info-row item-select">
+          <div class="item-select-title">发货</div>
+          <div class="item-select-column">
+            代发
+          </div>
+        </div>
+
+        <div class="detail-info-row item-select">
+          <div class="item-select-title">服务</div>
+          <div class="item-select-column service-icon">
+            <div class="service-icon-item sp">
+              <i></i>
+              <span>实拍</span>
+            </div>
+            <div class="service-icon-item tx">
+              <i></i>
+              <span>退现</span>
+            </div>
+            <div class="service-icon-item fahuo">
+              <i></i>
+              <span>48小时内发货</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- <div class="add-buy-car-box">
           <div class="item-select">
             <div class="item-select-title">
               <p>数量</p>
@@ -199,7 +314,7 @@
               >立即购买</Button
             >
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
@@ -535,11 +650,28 @@ export default {
   flex-direction: column;
 }
 
-.item-detail-title p {
-  @include content_color($light_content_color);
-  font-weight: bold;
-  font-size: 20px;
-  padding: 8px 0;
+.item-detail-title {
+  display: flex;
+  align-items: center;
+
+  .item-detail-title-left {
+    flex: 1 1 auto;
+    // @include content_color($light_content_color);
+    color: #333;
+    font-size: 18px;
+    font-weight: 400;
+    padding: 8px 0;
+  }
+
+  .item-detail-title-right {
+    flex: 0 0 auto;
+    margin-left: 20px;
+    width: 24px;
+    line-height: 14px;
+    cursor: pointer;
+  }
+
+
 }
 
 .item-detail-express {
@@ -557,13 +689,25 @@ export default {
   color: $theme_color;
 }
 
+.item-detail-banner {
+  position: relative;
+  width: 100%;
+  height: 40px;
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
 /*价格详情等*/
 .item-detail-price-row {
-  padding: 10px;
+  padding: 15px 20px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  background: url("../../assets/images/goodsDetail/price-bg.png");
+  background-color: #fbf1f0;
+  // background: url("../../assets/images/goodsDetail/price-bg.png");
 }
 
 .item-price-left {
@@ -572,9 +716,9 @@ export default {
 }
 
 .item-price-title {
-  color: #999999;
+  color: #6c6c6c;
   font-size: 14px;
-  margin-right: 15px;
+  margin-right: 20px;
 }
 
 .item-price-row {
@@ -582,9 +726,16 @@ export default {
 }
 
 .item-price {
-  color: $theme_color;
-  font-size: 20px;
-  cursor: pointer;
+  // color: $theme_color;
+  // font-size: 20px;
+  color: #ff4640;
+  font-size: 28px;
+  font-weight: bold;
+  // cursor: pointer;
+}
+.item-price-sub {
+  color: #999;
+  font-size: 14px;
 }
 .item-price-old {
   color: gray;
@@ -629,14 +780,16 @@ export default {
 .item-select {
   display: flex;
   flex-direction: row;
-  margin-top: 15px;
 }
 
 .item-select-title {
   @include content_color($light_content_color);
-  font-size: 14px;
+  font-size: 12px;
+  color: #6c6c6c;
   margin-right: 15px;
   width: 60px;
+  display: flex;
+  align-items: center;
 }
 
 .item-select-column {
@@ -646,7 +799,7 @@ export default {
 }
 
 .item-select-row {
-  margin-bottom: 8px;
+  // margin-bottom: 8px;
 }
 
 .item-select-box {
@@ -678,9 +831,6 @@ export default {
 }
 
 .add-buy-car-box {
-  width: 100%;
-  margin-top: 15px;
-  border-top: 1px dotted $border_color;
 }
 
 .add-buy-car {
@@ -707,4 +857,141 @@ export default {
   margin-bottom: 5px;
 }
 /******************商品图片及购买详情结束******************/
+
+// new
+.detail-info-line {
+  padding: 10px 0 10px 20px;
+  position: relative;
+  border-bottom: 1px #e5e5e5 dotted;
+
+  /deep/ {
+    dl {
+      display: flex;
+      align-items: center;
+      height: 30px;
+      line-height: 30px;
+
+      dt {
+        flex: 0 0 auto;
+        width: 68px;
+
+      }
+
+      dd {
+        flex: 1 1 auto;
+        position: relative;
+      }
+    }
+  }
+}
+
+.detail-info-row {
+  padding: 10px 0 10px 20px;
+  clear: both;
+  position: relative;
+}
+
+.samestyle-box{
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.detail-amount {
+  display: flex;
+  align-items: center;
+
+  /deep/ {
+    li {
+      display: inline-flex;
+      align-items: center;
+      height: 58px;
+      margin-right: 80px;
+      color: #333;
+      box-sizing: border-box;
+    }
+  }
+}
+
+.item-select-btn {
+  .ivu-btn {
+    width: 120px;
+    height: 38px;
+    border-radius: 0;
+
+    &:not(:last-child) {
+      margin-right: 10px;
+    }
+  }
+}
+
+.size-select {
+  display: flex;
+  width: 100%;
+  align-items: center;
+
+  &:not(:last-child) {
+    margin-bottom: 8px;
+  }
+
+  .size-select-label {
+    width: 100px;
+    padding-right: 10px;
+    font-weight: 700;
+  }
+  .size-select-label2 {
+    flex: 1;
+    width: 100px;
+    font-family: ArialMT;
+    color: #6c6c6c;
+  }
+  .size-select-input {
+    flex: 0 0 auto;
+
+    .ivu-input-number {
+      width: 120px;
+    }
+
+    /deep/ {
+
+      .ivu-input-number-input {
+        text-align: center;
+      }
+    }
+  }
+}
+
+.service-icon {
+  .service-icon-item {
+    display: inline-flex;
+    align-items: center;
+    // width: 60px;
+    margin-right: 15px;
+    color: #6c6c6c;
+    position: relative;
+
+    i {
+      width: 15px;
+      height: 15px;
+      margin: 0 5px 0 0;
+    }
+
+    &.sp i {
+      background-image: url('https://src.vvic.com/statics/v2/css/img/sp_icon3.png');
+      background-position: -207px -218px;
+    }
+
+    &.tx i {
+      background-image: url('https://src.vvic.com/statics/v2/css/img/sp_icon3.png');
+      background-position: -252px 0;
+    }
+
+    &.fahuo i {
+      background-image: url('https://src.vvic.com/statics/v2/css/img/sp_icon3.png');
+      background-position: -167px -218px;
+
+    }
+  }
+}
 </style>
