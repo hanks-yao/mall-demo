@@ -318,7 +318,7 @@ export default {
     ul {
       display: flex;
       align-items: center;
-      justify-content: start;
+      justify-content: flex-start;
       flex-wrap: wrap;
       padding: 20px 0;
       border-bottom: 1px #e5e5e5 solid;
