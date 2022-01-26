@@ -61,10 +61,13 @@
         </section>
       </main>
       <aside class="goods-aside">
-        <div class="shop-card">
+        <!-- 商品信息 -->
+        <!-- <div class="shop-card">
           <img :src="shopImg" />
-        </div>
-        <div class="others-card" style="margin-top: 20px">
+        </div> -->
+
+        <!-- 推荐栏 -->
+        <div class="others-card">
           <FxhhBox :round="1" title="推荐商品"></FxhhBox>
         </div>
       </aside>

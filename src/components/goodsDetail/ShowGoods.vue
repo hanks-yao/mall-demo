@@ -76,12 +76,13 @@
                 <span class="item-price">{{ skuDetail.price | unitPrice("￥") }}</span>
               </p>
             </div>
-            <div class="item-price-row">
+            <!-- <div class="item-price-row">
               <p>
                 <span class="item-price-title">淘宝价</span>
                 <span class="item-price-sub">{{ skuDetail.price | unitPrice("￥") }}</span>
               </p>
-            </div>
+            </div> -->
+
             <!-- 优惠券展示 -->
             <!-- <div class="item-price-row" v-if="promotionMap['COUPON'].length">
               <p>
@@ -142,16 +143,15 @@
             <dt>上新时间</dt>
             <dd>2021-11-02 00:13:06</dd>
           </dl>
-
-          <div class="samestyle-box">
-            <Button shape="circle" icon="ios-search" size="small">搜同款</Button>
-          </div>
+          <dl>
+            <dt>商家编号</dt>
+            <dd>412901239403</dd>
+          </dl>
         </div>
 
         <div class="detail-info-line">
           <ul class="detail-amount">
             <li>销量：15</li>
-            <li>上款量：64</li>
             <li>收藏量：23</li>
           </ul>
         </div>
@@ -186,7 +186,9 @@
               <div class="size-select-label2">150</div>
               <div class="size-select-input">
                 <InputNumber
+                  :min="0"
                   :value="0"
+                  :step="1"
                   controls-outside
                 ></InputNumber>
               </div>
@@ -196,7 +198,9 @@
               <div class="size-select-label2">155</div>
               <div class="size-select-input">
                 <InputNumber
+                  :min="0"
                   :value="0"
+                  :step="1"
                   controls-outside
                 ></InputNumber>
               </div>
@@ -206,7 +210,9 @@
               <div class="size-select-label2">160</div>
               <div class="size-select-input">
                 <InputNumber
+                  :min="0"
                   :value="0"
+                  :step="1"
                   controls-outside
                 ></InputNumber>
               </div>
@@ -230,12 +236,12 @@
           </div>
         </div>
 
-        <div class="detail-info-row item-select">
+        <!-- <div class="detail-info-row item-select">
           <div class="item-select-title">发货</div>
           <div class="item-select-column">
             代发
           </div>
-        </div>
+        </div> -->
 
         <div class="detail-info-row item-select">
           <div class="item-select-title">服务</div>
@@ -889,13 +895,6 @@ export default {
   padding: 10px 0 10px 20px;
   clear: both;
   position: relative;
-}
-
-.samestyle-box{
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
 }
 
 .detail-amount {
